@@ -30,8 +30,9 @@ initdb () {
 
     mkdir -p /var/lib/postgresql/9.3/main && chown -R postgres /var/lib/postgresql/
     sudo -u postgres -i /usr/lib/postgresql/9.3/bin/initdb --pgdata /var/lib/postgresql/9.3/main
-    ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem /var/lib/postgresql/9.3/main/server.crt
-    ln -s /etc/ssl/private/ssl-cert-snakeoil.key /var/lib/postgresql/9.3/main/server.key
+    cp /etc/ssl/certs/ssl-cert-snakeoil.pem /var/lib/postgresql/9.3/main/server.crt
+    cp /etc/ssl/private/ssl-cert-snakeoil.key /var/lib/postgresql/9.3/main/server.key
+    chown -R postgres:postgres /var/lib/postgresql/9.3/main
 }
 
 createuser () {
